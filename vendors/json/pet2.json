@@ -1,0 +1,18 @@
+{
+  "id": 385023,
+  "category": {
+    "id": 1,
+    "name": "dog"
+  },
+  "name": "mel",
+  "photoUrls": [
+    "string"
+  ],
+  "tags": [
+    {
+      "id": 1,
+      "name": "castrado, vacinado"
+    }
+  ],
+  "status": "solded"
+}
