@@ -117,7 +117,31 @@ def testar_incluir_pet_json_dinamico(pet_id,category_id,category_name,name,tags_
     # Ultilizara o arquivo pets_positivo.csv
 
     # 1.3 - Extra - Montar o Json dinamicamente a partir do CSV
+    corpo_json = '{'
+    corpo_json += f'  "id": {pet_id},'
+    corpo_json += '  "category": {'
+    corpo_json += f'    "id": {category_id},'
+    corpo_json += f'    "name": {category_name}'
+    corpo_json += '},'
+    corpo_json += f'"name": {name},'
+    corpo_json += '"string"'
+    corpo_json += '],'
+    corpo_json += '"photoUrls": ['
+    corpo_json += '"tags": ['
+    corpo_json += '{'
+    corpo_json += f'    "id": {tags_id},'
+    corpo_json += f'    "name": {tags_name}'
+    corpo_json += '}'
+    corpo_json += '],'
+    corpo_json += f'"status": {status}'
+    corpo_json += '}'
+
+
     # 2 - Executa
+    resultado_obtido = requests.post(
+        url=base_url + '/pet/',
+
+    )
     #
 
     # 3 - Valida
