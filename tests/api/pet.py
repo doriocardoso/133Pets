@@ -136,12 +136,23 @@ def testar_incluir_pet_json_dinamico(pet_id,category_id,category_name,name,tags_
     corpo_json += f'"status": {status}'
     corpo_json += '}'
 
-
+    print(corpo_json)
     # 2 - Executa
     resultado_obtido = requests.post(
         url=base_url + '/pet/',
-
+        data=corpo_json,
+        headers=headers
     )
-    #
 
     # 3 - Valida
+    assert resultado_obtido.status_code == status_code
+    corpo_da_resposta = resultado_obtido.json()
+    print(corpo_da_resposta)
+    assert corpo_da_resposta['id'] == pet_id
+    assert corpo_da_resposta['category'][0]['id'] == category_id
+    assert corpo_da_resposta['category'][0]['name'] == category_name
+    assert corpo_da_resposta['name'] == name
+    assert corpo_da_resposta['tags'][0]['id'] == tags_id
+    assert corpo_da_resposta['tags'][0]['name'] == tags_name
+    assert corpo_da_resposta['status'] == status
+
